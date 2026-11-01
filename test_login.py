@@ -3,12 +3,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
 class TestLogin:
 
     def setup_method(self):
         self.driver = webdriver.Chrome()
-        self.wait = WebDriverWait(self.driver, 10)
+        self.wait = WebDriverWait(self.driver, 15)
 
     def teardown_method(self):
         self.driver.quit()
@@ -28,13 +27,11 @@ class TestLogin:
         # 4. Вводим email зарегистрированного пользователя
         email_input.send_keys("assfaa173@gmail.com")
 
-
         # 5. Находим поле Password
         password_input = self.driver.find_element(By.ID, "Password")
 
         # 6. Вводим учебный пароль
         password_input.send_keys("Aa197411")
-
 
         # 7. Нажимаем Log in
         self.driver.find_element(
@@ -51,3 +48,12 @@ class TestLogin:
 
         assert account_link.is_displayed()
         assert account_link.text == "assfaa173@gmail.com"
+        # self.wait.until(
+        #     EC.visibility_of_element_located(
+        #         (By.CSS_SELECTOR, "a.account")
+        #     )
+        # )
+        #
+        # assert self.driver.find_element(
+        #     By.CSS_SELECTOR, "a.account"
+        # ).is_displayed()
