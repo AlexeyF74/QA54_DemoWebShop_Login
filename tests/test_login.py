@@ -12,6 +12,7 @@ class TestLogin:
     def teardown_method(self):
         self.driver.quit()
 
+
     def test_successful_login(self):
         # 1. Открываем сайт
         self.driver.get("https://demowebshop.tricentis.com/")
